@@ -13,7 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/* HERO */
 .hero {
   background: #1a1a1a;
   color: #fff;
@@ -27,18 +26,9 @@ body {
   color: #888;
   margin-bottom: 10px;
 }
-.hero h1 {
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 6px;
-}
-.hero-sub {
-  font-size: 13px;
-  color: #888;
-}
+.hero h1 { font-size: 24px; font-weight: 600; line-height: 1.2; margin-bottom: 6px; }
+.hero-sub { font-size: 13px; color: #888; }
 
-/* NAV TABS */
 .tabs {
   display: flex;
   background: #1a1a1a;
@@ -58,15 +48,10 @@ body {
   border-bottom: 2px solid transparent;
   transition: all 0.15s;
 }
-.tab-btn.active {
-  color: #fff;
-  border-bottom-color: #fff;
-}
+.tab-btn.active { color: #fff; border-bottom-color: #fff; }
 
-/* CONTAINER */
 .container { max-width: 680px; margin: 0 auto; padding: 20px 16px 60px; }
 
-/* SECTION */
 .section { margin-bottom: 20px; }
 .section-label {
   font-size: 11px;
@@ -78,7 +63,6 @@ body {
   padding-left: 2px;
 }
 
-/* CARDS */
 .card {
   background: #fff;
   border-radius: 14px;
@@ -87,7 +71,7 @@ body {
   margin-bottom: 12px;
 }
 
-/* CAR PHOTO CARDS */
+/* CAR PHOTOS */
 .car-photo-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -103,8 +87,11 @@ body {
 .car-photo-wrap {
   width: 100%;
   aspect-ratio: 16/10;
-  background: #f5f5f3;
+  background: #1a1a1a;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .car-photo-wrap img {
   width: 100%;
@@ -112,66 +99,54 @@ body {
   object-fit: cover;
   display: block;
 }
-.car-photo-info {
-  padding: 14px 16px;
+.car-photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
 }
-.car-photo-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 2px;
-}
-.car-photo-type {
-  font-size: 11px;
-  color: #999;
-}
+.car-photo-placeholder svg { opacity: 0.3; }
+.car-photo-placeholder span { font-size: 11px; color: #666; }
+.car-photo-info { padding: 14px 16px; }
+.car-photo-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+.car-photo-type { font-size: 11px; color: #999; }
 
 /* SPEC TABLE */
-.spec-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-}
-.spec-header {
+.spec-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.spec-table th {
+  text-align: left;
+  padding: 10px 12px;
+  background: #f8f8f6;
   font-size: 11px;
   font-weight: 600;
-  color: #999;
-  padding: 8px 10px;
-  background: #f8f8f6;
+  color: #888;
   border-bottom: 1px solid #e4e4e2;
 }
-.spec-header:first-child { border-radius: 8px 0 0 0; }
-.spec-header:last-child { border-radius: 0 8px 0 0; }
-.spec-row {
-  display: contents;
-}
-.spec-cell {
-  font-size: 12px;
-  padding: 9px 10px;
+.spec-table th:not(:first-child) { text-align: center; }
+.spec-table td {
+  padding: 9px 12px;
   border-bottom: 1px solid #f0f0ee;
   color: #444;
   line-height: 1.4;
+  vertical-align: middle;
 }
-.spec-cell:nth-child(3n+1) {
-  color: #888;
-  background: #fafaf8;
+.spec-table td:not(:first-child) { text-align: center; font-weight: 500; color: #1a1a1a; }
+.spec-table td:first-child { color: #888; }
+.spec-table tr:last-child td { border-bottom: none; }
+.spec-section-header td {
+  background: #f5f5f3;
+  color: #1a1a1a !important;
+  font-weight: 600 !important;
+  font-size: 12px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid #e4e4e2 !important;
 }
-.spec-cell.highlight { color: #1a1a1a; font-weight: 500; }
-
-/* FEATURE COMPARE */
-.feature-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 0;
-  border-bottom: 1px solid #f0f0ee;
-  padding: 8px 0;
-  align-items: center;
-}
-.feature-row:last-child { border-bottom: none; }
-.feature-label { font-size: 12px; color: #888; padding-right: 8px; }
-.feature-val { font-size: 12px; color: #1a1a1a; font-weight: 500; text-align: center; }
-.feature-val.check { color: #2d7a3a; }
-.feature-val.cross { color: #ccc; }
+.check { color: #2d7a3a !important; }
+.cross { color: #ccc !important; font-weight: 400 !important; }
+.amber-text { color: #b45309 !important; }
 
 /* TOGGLE */
 .toggle-group {
@@ -201,12 +176,7 @@ body {
 }
 
 /* SLIDERS */
-.input-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 13px;
-}
+.input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 13px; }
 .input-label { font-size: 12px; color: #666; min-width: 148px; flex-shrink: 0; }
 input[type=range] {
   flex: 1;
@@ -230,12 +200,7 @@ input[type=range]::-webkit-slider-thumb {
 
 /* COST CARDS */
 .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-.cost-card {
-  background: #fff;
-  border: 1px solid #e4e4e2;
-  border-radius: 14px;
-  padding: 16px;
-}
+.cost-card { background: #fff; border: 1px solid #e4e4e2; border-radius: 14px; padding: 16px; }
 .cost-car-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px; }
 .line-item {
   display: flex;
@@ -261,7 +226,6 @@ input[type=range]::-webkit-slider-thumb {
   font-weight: 600;
 }
 
-/* BADGE */
 .badge {
   font-size: 10px;
   font-weight: 600;
@@ -273,23 +237,15 @@ input[type=range]::-webkit-slider-thumb {
 .badge-cra-ok { background: #e6f4ea; color: #2d7a3a; }
 .badge-cra-over { background: #fff3e0; color: #b45309; }
 
-/* SUMMARY */
 .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-.summary-item {
-  background: #fff;
-  border: 1px solid #e4e4e2;
-  border-radius: 12px;
-  padding: 14px 16px;
-}
+.summary-item { background: #fff; border: 1px solid #e4e4e2; border-radius: 12px; padding: 14px 16px; }
 .summary-item-label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
 .summary-item-val { font-size: 17px; font-weight: 600; color: #1a1a1a; }
 .summary-item-sub { font-size: 11px; color: #aaa; margin-top: 2px; }
 
-/* HIDDEN PAGES */
 .page { display: none; }
 .page.active { display: block; }
 
-/* NOTES */
 .note-text {
   font-size: 11px;
   color: #aaa;
@@ -298,36 +254,15 @@ input[type=range]::-webkit-slider-thumb {
   padding: 0 8px;
   margin-top: 8px;
 }
-.footer-badge {
-  display: block;
-  font-size: 11px;
-  color: #ccc;
-  margin-top: 24px;
-  text-align: center;
-}
-
-/* IMPORTANT NOTE BOX */
-.info-box {
-  background: #fff8ed;
-  border: 1px solid #fde68a;
-  border-radius: 10px;
-  padding: 12px 14px;
-  font-size: 12px;
-  color: #92400e;
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
+.footer-badge { display: block; font-size: 11px; color: #ccc; margin-top: 24px; text-align: center; }
 
 @media (max-width: 480px) {
   .car-photo-grid { grid-template-columns: 1fr; }
   .cost-grid { grid-template-columns: 1fr; }
   .summary-grid { grid-template-columns: 1fr; }
-  .spec-grid { grid-template-columns: 1fr; }
-  .spec-header:nth-child(2), .spec-cell:nth-child(3n+2),
-  .spec-header:nth-child(3), .spec-cell:nth-child(3n) { display: none; }
-  .feature-row { grid-template-columns: 1fr 1fr 1fr; }
   .input-label { min-width: 110px; }
   .hero h1 { font-size: 20px; }
+  .spec-table th:nth-child(3), .spec-table td:nth-child(3) { display: none; }
 }
 </style>
 </head>
@@ -340,273 +275,13 @@ input[type=range]::-webkit-slider-thumb {
 </div>
 
 <div class="tabs">
-  <button class="tab-btn active" onclick="showPage('overview', this)">车型对比</button>
+  <button class="tab-btn active" onclick="showPage('cost', this)">费用模型</button>
+  <button class="tab-btn" onclick="showPage('overview', this)">车型对比</button>
   <button class="tab-btn" onclick="showPage('config', this)">配置详情</button>
-  <button class="tab-btn" onclick="showPage('cost', this)">费用模型</button>
 </div>
 
-<!-- PAGE 1: OVERVIEW -->
-<div class="page active" id="page-overview">
-<div class="container">
-
-  <div class="section">
-    <div class="car-photo-grid">
-      <div class="car-photo-card">
-        <div class="car-photo-wrap">
-          <img src="https://www.mercedes-benz.ca/content/dam/mb-nafta/ca/vehicles/eqb/suv/2025/gallery/exterior/mercedes-benz-eqb-300-4matic-suv-2025-exterior-mojave-silver-metallic.jpg"
-               onerror="this.style.background='#e8e8e6'; this.src=''; this.alt='EQB 300';"
-               alt="2025 Mercedes-Benz EQB 300 4MATIC">
-        </div>
-        <div class="car-photo-info">
-          <div class="car-photo-name">EQB 300 4MATIC</div>
-          <div class="car-photo-type">纯电 · BEV</div>
-        </div>
-      </div>
-      <div class="car-photo-card">
-        <div class="car-photo-wrap">
-          <img src="https://www.mercedes-benz.ca/content/dam/mb-nafta/ca/vehicles/glc/suv/2025/gallery/exterior/mercedes-benz-glc-350e-4matic-suv-2025-exterior-graphite-grey-metallic.jpg"
-               onerror="this.style.background='#e8e8e6'; this.src=''; this.alt='GLC 350e';"
-               alt="2025 Mercedes-Benz GLC 350e 4MATIC">
-        </div>
-        <div class="car-photo-info">
-          <div class="car-photo-name">GLC 350e 4MATIC</div>
-          <div class="car-photo-type">插电混动 · PHEV</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="info-box">
-    ⚠️ dealer报的"GLC 300e"实际上是 <strong>GLC 350e</strong> — 2025年加拿大市场插电混动只有350e这一个型号，不存在300e。
-  </div>
-
-  <div class="section">
-    <div class="section-label">核心参数对比</div>
-    <div class="card" style="padding: 0; overflow: hidden;">
-      <div class="spec-grid">
-        <div class="spec-header">参数</div>
-        <div class="spec-header">EQB 300</div>
-        <div class="spec-header">GLC 350e</div>
-
-        <div class="spec-cell">动力类型</div>
-        <div class="spec-cell highlight">纯电 BEV</div>
-        <div class="spec-cell highlight">插电混动 PHEV</div>
-
-        <div class="spec-cell">电池容量</div>
-        <div class="spec-cell">70.5 kWh</div>
-        <div class="spec-cell">24.8 kWh</div>
-
-        <div class="spec-cell">纯电续航</div>
-        <div class="spec-cell highlight">约 356 km</div>
-        <div class="spec-cell highlight">约 87 km</div>
-
-        <div class="spec-cell">综合马力</div>
-        <div class="spec-cell">228 hp</div>
-        <div class="spec-cell">313 hp</div>
-
-        <div class="spec-cell">0–100 km/h</div>
-        <div class="spec-cell">7.6 秒</div>
-        <div class="spec-cell">5.8 秒</div>
-
-        <div class="spec-cell">驱动方式</div>
-        <div class="spec-cell">AWD 4MATIC</div>
-        <div class="spec-cell">AWD 4MATIC</div>
-
-        <div class="spec-cell">变速箱</div>
-        <div class="spec-cell">单速直驱</div>
-        <div class="spec-cell">9速自动</div>
-
-        <div class="spec-cell">长途能力</div>
-        <div class="spec-cell">需要充电规划</div>
-        <div class="spec-cell highlight">无忧（燃油兜底）</div>
-
-        <div class="spec-cell">加拿大起售价</div>
-        <div class="spec-cell">约 $64,990</div>
-        <div class="spec-cell">约 $64,900</div>
-
-        <div class="spec-cell">BC iZEV补贴</div>
-        <div class="spec-cell">❌ 公司不享受</div>
-        <div class="spec-cell">❌ 公司不享受</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">你的使用场景适配</div>
-    <div class="card">
-      <div class="feature-row" style="padding-top:0;">
-        <div class="feature-label"></div>
-        <div class="feature-val" style="color:#999; font-size:11px;">EQB 300</div>
-        <div class="feature-val" style="color:#999; font-size:11px;">GLC 350e</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">温哥华市区日常</div>
-        <div class="feature-val check">✓ 最适合</div>
-        <div class="feature-val check">✓ 适合</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">跑长途（如Agassiz）</div>
-        <div class="feature-val" style="color:#888;">有GLC 350e兜底</div>
-        <div class="feature-val check">✓ 无忧</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">Film location不规律</div>
-        <div class="feature-val check">✓ 市区够用</div>
-        <div class="feature-val check">✓ 全能</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">公寓充电（租住）</div>
-        <div class="feature-val amber">需装充电桩</div>
-        <div class="feature-val check">✓ 随时加油</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">搬家灵活性</div>
-        <div class="feature-val amber">充电桩不带走</div>
-        <div class="feature-val check">✓ 无顾虑</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">日常驾驶体验</div>
-        <div class="feature-val check">✓ 安静省心</div>
-        <div class="feature-val check">✓ 动力更强</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-<!-- PAGE 2: CONFIG -->
-<div class="page" id="page-config">
-<div class="container">
-
-  <div class="section">
-    <div class="section-label">EQB 300 4MATIC — 标准配置</div>
-    <div class="card">
-      <div class="feature-row" style="padding-top:0; border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin-bottom: 4px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">安全与驾驶辅助</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">7气囊系统</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">后视摄像头</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">盲点监测</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">自适应巡航 DISTRONIC</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">车道保持辅助</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">自动紧急制动</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">坡道辅助</div><div class="feature-val check">✓</div><div></div></div>
-
-      <div class="feature-row" style="border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin: 8px 0 4px; padding-top: 8px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">科技与信息娱乐</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">MBUX第二代系统</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">12.3" 驾驶员显示屏</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">11.9" 中央触控屏</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">语音助手 Hey Mercedes</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">Apple CarPlay / Android Auto</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">MB导航含电动智能规划</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">无线充电</div><div class="feature-val check">✓</div><div></div></div>
-
-      <div class="feature-row" style="border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin: 8px 0 4px; padding-top: 8px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">舒适与内饰</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">前排加热座椅</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">双区自动空调</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">环境氛围灯</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">电动尾门</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">无钥匙进入</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">可选7座（第三排）</div><div class="feature-val check">✓ 可选</div><div></div></div>
-
-      <div class="feature-row" style="border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin: 8px 0 4px; padding-top: 8px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">充电规格</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">AC慢充（Level 2）</div><div class="feature-val check">约8–9小时满</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">DC快充</div><div class="feature-val check">约30分钟80%</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">Mercedes me Charge</div><div class="feature-val check">✓ 标配</div><div></div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">GLC 350e 4MATIC — 标准配置</div>
-    <div class="card">
-      <div class="feature-row" style="padding-top:0; border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin-bottom: 4px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">动力系统（独有）</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">2.0T涡轮 + 电动马达</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">综合输出 313 hp</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">纯电续航约87km</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">最高140km/h纯电行驶</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">100kW制动能量回收</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">9速自动变速箱</div><div class="feature-val check">✓</div><div></div></div>
-
-      <div class="feature-row" style="border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin: 8px 0 4px; padding-top: 8px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">安全与驾驶辅助</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">后视摄像头</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">盲点监测</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">自适应巡航 DISTRONIC</div><div class="feature-val check">✓ 含路线限速</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">主动转向辅助</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">自动紧急制动</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">透明引擎盖显示（可选）</div><div class="feature-val" style="color:#888;">选装</div><div></div></div>
-
-      <div class="feature-row" style="border-bottom: 1px solid #f0f0ee; padding-bottom: 8px; margin: 8px 0 4px; padding-top: 8px;">
-        <div class="feature-label" style="color:#1a1a1a; font-weight:600; font-size:13px;">科技与舒适（与EQB相同）</div>
-        <div></div><div></div>
-      </div>
-      <div class="feature-row"><div class="feature-label">MBUX + 12.3" + 11.9" 双屏</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">Apple CarPlay / Android Auto</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">前排加热座椅</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">双区自动空调</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">环境氛围灯</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">无钥匙进入</div><div class="feature-val check">✓</div><div></div></div>
-      <div class="feature-row"><div class="feature-label">Mercedes me Charge</div><div class="feature-val check">✓ 标配</div><div></div></div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">两车主要区别</div>
-    <div class="card">
-      <div class="feature-row" style="padding-top:0;">
-        <div class="feature-label"></div>
-        <div class="feature-val" style="color:#999; font-size:11px;">EQB 300</div>
-        <div class="feature-val" style="color:#999; font-size:11px;">GLC 350e</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">第三排座位</div>
-        <div class="feature-val check">✓ 可选7座</div>
-        <div class="feature-val cross">✗</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">长途无忧</div>
-        <div class="feature-val cross">✗ 需充电</div>
-        <div class="feature-val check">✓ 燃油兜底</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">加速性能</div>
-        <div class="feature-val" style="color:#888;">7.6秒</div>
-        <div class="feature-val check">5.8秒</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">日常使用成本</div>
-        <div class="feature-val check">更低（纯电）</div>
-        <div class="feature-val" style="color:#888;">需加油</div>
-      </div>
-      <div class="feature-row">
-        <div class="feature-label">充电桩依赖</div>
-        <div class="feature-val amber">高</div>
-        <div class="feature-val check">低</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-
-<!-- PAGE 3: COST -->
-<div class="page" id="page-cost">
+<!-- PAGE 1: COST -->
+<div class="page active" id="page-cost">
 <div class="container">
 
   <div class="section">
@@ -622,13 +297,13 @@ input[type=range]::-webkit-slider-thumb {
     <div class="card">
       <div class="input-row">
         <span class="input-label">EQB 300 车价</span>
-        <input type="range" min="60000" max="80000" step="500" id="eqb-price" value="67000" oninput="update()">
-        <span class="input-val" id="eqb-price-out">$67,000</span>
+        <input type="range" min="60000" max="80000" step="500" id="eqb-price" value="65000" oninput="update()">
+        <span class="input-val" id="eqb-price-out">$65,000</span>
       </div>
       <div class="input-row">
         <span class="input-label">GLC 350e 车价</span>
-        <input type="range" min="65000" max="85000" step="500" id="glc-price" value="73150" oninput="update()">
-        <span class="input-val" id="glc-price-out">$73,150</span>
+        <input type="range" min="65000" max="85000" step="500" id="glc-price" value="75000" oninput="update()">
+        <span class="input-val" id="glc-price-out">$75,000</span>
       </div>
       <div class="input-row">
         <span class="input-label">年里程 (km)</span>
@@ -676,6 +351,155 @@ input[type=range]::-webkit-slider-thumb {
       PST不可回收。CRA lease抵扣上限$1,050/月。Acquisition fee约$795未计入。<br>
       实际数字以dealer报价为准。
     </p>
+  </div>
+
+</div>
+</div>
+
+<!-- PAGE 2: OVERVIEW -->
+<div class="page" id="page-overview">
+<div class="container">
+
+  <div class="section">
+    <div class="car-photo-grid">
+      <div class="car-photo-card">
+        <div class="car-photo-wrap">
+          <img
+            src="https://media.mbusa.com/content/dam/lexicon/mb-nafta/en/vehicles/eqb/suv/2025/features/exterior/03-2025-eqb-300-4matic-suv-exterior.jpg"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            alt="2025 EQB 300 4MATIC">
+          <div class="car-photo-placeholder" style="display:none;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M5 17H3a2 2 0 01-2-2V9a2 2 0 012-2h1l2-3h12l2 3h1a2 2 0 012 2v6a2 2 0 01-2 2h-2m-7 0a3 3 0 100-6 3 3 0 000 6z"/></svg>
+            <span style="color:#fff;">EQB 300</span>
+          </div>
+        </div>
+        <div class="car-photo-info">
+          <div class="car-photo-name">EQB 300 4MATIC</div>
+          <div class="car-photo-type">纯电 · BEV</div>
+        </div>
+      </div>
+      <div class="car-photo-card">
+        <div class="car-photo-wrap">
+          <img
+            src="https://media.mbusa.com/content/dam/lexicon/mb-nafta/en/vehicles/glc/suv/2025/features/exterior/03-2025-glc-350e-4matic-suv-exterior.jpg"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            alt="2025 GLC 350e 4MATIC">
+          <div class="car-photo-placeholder" style="display:none;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M5 17H3a2 2 0 01-2-2V9a2 2 0 012-2h1l2-3h12l2 3h1a2 2 0 012 2v6a2 2 0 01-2 2h-2m-7 0a3 3 0 100-6 3 3 0 000 6z"/></svg>
+            <span style="color:#fff;">GLC 350e</span>
+          </div>
+        </div>
+        <div class="car-photo-info">
+          <div class="car-photo-name">GLC 350e 4MATIC</div>
+          <div class="car-photo-type">插电混动 · PHEV</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">核心参数对比</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="spec-table">
+        <thead>
+          <tr><th>参数</th><th>EQB 300</th><th>GLC 350e</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>动力类型</td><td>纯电 BEV</td><td>插电混动 PHEV</td></tr>
+          <tr><td>电池容量</td><td>70.5 kWh</td><td>24.8 kWh</td></tr>
+          <tr><td>纯电续航</td><td class="check">约 356 km</td><td>约 87 km</td></tr>
+          <tr><td>综合马力</td><td>228 hp</td><td class="check">313 hp</td></tr>
+          <tr><td>0–100 km/h</td><td>7.6 秒</td><td class="check">5.8 秒</td></tr>
+          <tr><td>驱动方式</td><td>AWD 4MATIC</td><td>AWD 4MATIC</td></tr>
+          <tr><td>长途能力</td><td class="amber-text">需充电规划</td><td class="check">燃油兜底无忧</td></tr>
+          <tr><td>第三排座位</td><td class="check">可选7座</td><td class="cross">✗</td></tr>
+          <tr><td>加拿大起售价</td><td>约 $65,000</td><td>约 $75,000</td></tr>
+          <tr><td>BC iZEV补贴</td><td class="amber-text">公司不享受</td><td class="amber-text">公司不享受</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">使用场景适配</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="spec-table">
+        <thead>
+          <tr><th>场景</th><th>EQB 300</th><th>GLC 350e</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>温哥华市区日常</td><td class="check">✓ 最适合</td><td class="check">✓ 适合</td></tr>
+          <tr><td>长途（如Agassiz）</td><td>有旧GLC兜底</td><td class="check">✓ 本身无忧</td></tr>
+          <tr><td>Film location不规律</td><td class="check">✓ 市区够用</td><td class="check">✓ 全能</td></tr>
+          <tr><td>公寓充电（租住）</td><td class="amber-text">需装充电桩</td><td class="check">✓ 加油即可</td></tr>
+          <tr><td>搬家灵活性</td><td class="amber-text">充电桩钱损失</td><td class="check">✓ 无顾虑</td></tr>
+          <tr><td>日常驾驶体验</td><td class="check">安静省心</td><td class="check">动力更强</td></tr>
+          <tr><td>日常运行成本</td><td class="check">更低（纯电）</td><td>需定期加油</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- PAGE 3: CONFIG -->
+<div class="page" id="page-config">
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">标准配置并排对比</div>
+    <div class="card" style="padding: 0; overflow: hidden;">
+      <table class="spec-table">
+        <thead>
+          <tr><th>配置项</th><th>EQB 300</th><th>GLC 350e</th></tr>
+        </thead>
+        <tbody>
+          <tr class="spec-section-header"><td colspan="3">动力系统</td></tr>
+          <tr><td>纯电续航</td><td class="check">356 km</td><td>87 km</td></tr>
+          <tr><td>综合马力</td><td>228 hp</td><td class="check">313 hp</td></tr>
+          <tr><td>电动马力</td><td>228 hp</td><td>134 hp</td></tr>
+          <tr><td>扭矩</td><td>390 lb-ft</td><td class="check">406 lb-ft</td></tr>
+          <tr><td>0–100 km/h</td><td>7.6 秒</td><td class="check">5.8 秒</td></tr>
+          <tr><td>变速箱</td><td>单速直驱</td><td>9速自动</td></tr>
+          <tr><td>能量回收</td><td>✓</td><td class="check">✓ 100kW</td></tr>
+          <tr><td>最高纯电时速</td><td>180 km/h</td><td>140 km/h</td></tr>
+
+          <tr class="spec-section-header"><td colspan="3">充电规格</td></tr>
+          <tr><td>AC慢充（Level 2）</td><td>约 8–9 小时满</td><td>约 3 小时满</td></tr>
+          <tr><td>DC快充</td><td class="check">约30分钟至80%</td><td class="cross">✗ 不支持</td></tr>
+          <tr><td>Mercedes me Charge</td><td class="check">✓ 标配</td><td class="check">✓ 标配</td></tr>
+
+          <tr class="spec-section-header"><td colspan="3">科技与信息娱乐</td></tr>
+          <tr><td>MBUX 第二代系统</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>12.3" 数字驾驶显示</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>11.9" 中央触控屏</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Hey Mercedes 语音助手</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>Apple CarPlay / Android Auto</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>MB导航</td><td class="check">✓ 含电动规划</td><td class="check">✓</td></tr>
+          <tr><td>无线充电</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>透明引擎盖显示</td><td class="cross">✗</td><td>选装</td></tr>
+
+          <tr class="spec-section-header"><td colspan="3">驾驶辅助</td></tr>
+          <tr><td>自适应巡航 DISTRONIC</td><td class="check">✓</td><td class="check">✓ 含路线限速</td></tr>
+          <tr><td>车道保持辅助</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>主动转向辅助</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>盲点监测</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>自动紧急制动</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>后视摄像头</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>停车辅助</td><td class="check">✓</td><td class="check">✓</td></tr>
+
+          <tr class="spec-section-header"><td colspan="3">舒适与内饰</td></tr>
+          <tr><td>前排加热座椅</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>双区自动空调</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>环境氛围灯</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>电动尾门</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>无钥匙进入</td><td class="check">✓</td><td class="check">✓</td></tr>
+          <tr><td>7座（第三排）</td><td class="check">✓ 可选</td><td class="cross">✗</td></tr>
+          <tr><td>气囊数量</td><td>7个</td><td>7个</td></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
 </div>
