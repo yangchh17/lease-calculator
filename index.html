@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mercedes Lease 对比 — EQB 300 vs GLC 300e</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f5f5f3;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .page-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+  .page-header p {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; }
+
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 16px;
+    border: 1px solid #e8e8e6;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 14px;
+  }
+
+  .toggle-group {
+    display: flex;
+    background: #f0f0ee;
+    border-radius: 10px;
+    padding: 3px;
+    gap: 3px;
+    margin-bottom: 20px;
+  }
+  .toggle-btn {
+    flex: 1;
+    padding: 9px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .toggle-btn.active {
+    background: #fff;
+    color: #1a1a1a;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .input-label {
+    font-size: 13px;
+    color: #555;
+    min-width: 150px;
+    flex-shrink: 0;
+  }
+  input[type=range] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: #e0e0de;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .input-val {
+    font-size: 13px;
+    font-weight: 600;
+    min-width: 72px;
+    text-align: right;
+    color: #1a1a1a;
+  }
+
+  .cars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 500px) {
+    .cars-grid { grid-template-columns: 1fr; }
+    .input-label { min-width: 120px; }
+  }
+
+  .car-card {
+    background: #fff;
+    border: 1px solid #e8e8e6;
+    border-radius: 14px;
+    padding: 18px;
+    transition: border-color 0.2s;
+  }
+  .car-card.winner {
+    border: 2px solid #1a1a1a;
+  }
+
+  .car-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .car-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .badge-winner { background: #1a1a1a; color: #fff; }
+  .badge-cra-ok { background: #e6f4ea; color: #2d7a3a; }
+  .badge-cra-over { background: #fff3e0; color: #b45309; }
+
+  .line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0ee;
+    font-size: 13px;
+  }
+  .line-item:last-child { border-bottom: none; }
+  .line-key { color: #888; }
+  .line-val { font-weight: 500; color: #1a1a1a; }
+  .line-val.green { color: #2d7a3a; }
+  .line-val.amber { color: #b45309; }
+
+  .total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0 0;
+    margin-top: 8px;
+    border-top: 1px solid #e8e8e6;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .summary-card {
+    background: #1a1a1a;
+    border-radius: 14px;
+    padding: 20px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .summary-headline {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 6px;
+  }
+  .summary-amount {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .summary-sub {
+    font-size: 12px;
+    color: #888;
+  }
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #333;
+  }
+  .summary-item-label { font-size: 11px; color: #888; margin-bottom: 3px; }
+  .summary-item-val { font-size: 15px; font-weight: 600; color: #fff; }
+
+  .note-text {
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .identity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #bbb;
+    margin-top: 24px;
+    justify-content: center;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="page-header">
+    <h1>Mercedes Lease 对比</h1>
+    <p>EQB 300 vs GLC 300e &nbsp;·&nbsp; BC省公司名义</p>
+  </div>
+
+  <div class="card">
+    <div class="section-label">Lease 期限</div>
+    <div class="toggle-group">
+      <button class="toggle-btn active" onclick="setTerm(36, this)">36 个月</button>
+      <button class="toggle-btn" onclick="setTerm(48, this)">48 个月</button>
+    </div>
+
+    <div class="section-label">调整参数</div>
+
+    <div class="input-row">
+      <span class="input-label">EQB 300 车价</span>
+      <input type="range" min="60000" max="80000" step="500" id="eqb-price" value="67000" oninput="update()">
+      <span class="input-val" id="eqb-price-out">$67,000</span>
+    </div>
+    <div class="input-row">
+      <span class="input-label">GLC 300e 车价</span>
+      <input type="range" min="65000" max="85000" step="500" id="glc-price" value="73150" oninput="update()">
+      <span class="input-val" id="glc-price-out">$73,150</span>
+    </div>
+    <div class="input-row">
+      <span class="input-label">年里程 (km)</span>
+      <input type="range" min="20000" max="24000" step="2000" id="km" value="24000" oninput="update()">
+      <span class="input-val" id="km-out">24,000</span>
+    </div>
+    <div class="input-row">
+      <span class="input-label">商业用途 %</span>
+      <input type="range" min="50" max="100" step="5" id="bizuse" value="80" oninput="update()">
+      <span class="input-val" id="bizuse-out">80%</span>
+    </div>
+    <div class="input-row">
+      <span class="input-label">EQB 利率 (MF×2400)</span>
+      <input type="range" min="0.0008" max="0.003" step="0.0001" id="eqb-mf" value="0.00125" oninput="update()">
+      <span class="input-val" id="eqb-mf-out">3.0%</span>
+    </div>
+    <div class="input-row">
+      <span class="input-label">GLC 利率 (MF×2400)</span>
+      <input type="range" min="0.0008" max="0.003" step="0.0001" id="glc-mf" value="0.00125" oninput="update()">
+      <span class="input-val" id="glc-mf-out">3.0%</span>
+    </div>
+    <div class="input-row">
+      <span class="input-label">充电桩安装费</span>
+      <input type="range" min="800" max="3000" step="100" id="charger" value="1550" oninput="update()">
+      <span class="input-val" id="charger-out">$1,550</span>
+    </div>
+  </div>
+
+  <div class="cars-grid" id="cards-container"></div>
+
+  <div id="summary-container"></div>
+
+  <p class="note-text">
+    所有数字为估算，实际以dealer报价为准。<br>
+    残值率估算：EQB 36mo 52% / 48mo 46%，GLC 36mo 55% / 48mo 49%。<br>
+    PST 不可回收，已计入实际成本。CRA lease抵扣上限 $1,050/月。
+  </p>
+
+  <p class="identity-badge">由 Claude 生成 · 仅供参考</p>
+
+</div>
+
+<script>
+let term = 36;
+
+function setTerm(t, btn) {
+  term = t;
+  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  update();
+}
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-CA');
+}
+
+function calcLease(price, mf, residualPct, months) {
+  const residual = price * residualPct;
+  const depreciation = (price - residual) / months;
+  const finance = (price + residual) * mf;
+  return depreciation + finance;
+}
+
+function update() {
+  const eqbPrice = +document.getElementById('eqb-price').value;
+  const glcPrice = +document.getElementById('glc-price').value;
+  const bizuse = +document.getElementById('bizuse').value / 100;
+  const eqbMF = +document.getElementById('eqb-mf').value;
+  const glcMF = +document.getElementById('glc-mf').value;
+  const charger = +document.getElementById('charger').value;
+
+  document.getElementById('eqb-price-out').textContent = fmt(eqbPrice);
+  document.getElementById('glc-price-out').textContent = fmt(glcPrice);
+  document.getElementById('km-out').textContent = document.getElementById('km').value === '20000' ? '20,000' : '24,000';
+  document.getElementById('bizuse-out').textContent = Math.round(bizuse * 100) + '%';
+  document.getElementById('eqb-mf-out').textContent = (eqbMF * 2400).toFixed(1) + '%';
+  document.getElementById('glc-mf-out').textContent = (glcMF * 2400).toFixed(1) + '%';
+  document.getElementById('charger-out').textContent = fmt(charger);
+
+  const eqbRes = term === 36 ? 0.52 : 0.46;
+  const glcRes = term === 36 ? 0.55 : 0.49;
+  const CRA = 1050;
+  const corpTax = 0.11;
+  const GST = 0.05;
+
+  const eqbMonthly = calcLease(eqbPrice, eqbMF, eqbRes, term);
+  const glcMonthly = calcLease(glcPrice, glcMF, glcRes, term);
+
+  const eqbCapped = Math.min(eqbMonthly, CRA);
+  const glcCapped = Math.min(glcMonthly, CRA);
+
+  const eqbTotal = eqbMonthly * term;
+  const glcTotal = glcMonthly * term;
+
+  const eqbGST = eqbMonthly * GST * term;
+  const glcGST = glcMonthly * GST * term;
+
+  const eqbTaxShield = eqbCapped * term * bizuse * corpTax;
+  const glcTaxShield = glcCapped * term * bizuse * corpTax;
+
+  const eqbElec = term === 36 ? 1800 : 2400;
+  const glcFuel = term === 36 ? 3200 : 4200;
+
+  const eqbNet = eqbTotal - eqbGST - eqbTaxShield + charger + eqbElec;
+  const glcNet = glcTotal - glcGST - glcTaxShield + glcFuel;
+
+  const eqbWins = eqbNet < glcNet;
+  const diff = Math.abs(eqbNet - glcNet);
+  const yrs = term === 36 ? '3年' : '4年';
+
+  function makeCard(name, monthly, total, gstBack, taxShield, extra1L, extra1, extra2L, extra2, net, overCRA, wins) {
+    return `
+    <div class="car-card ${wins ? 'winner' : ''}">
+      <div class="car-header">
+        <span class="car-name">${name}</span>
+        ${wins ? '<span class="badge badge-winner">更划算</span>' : ''}
+      </div>
+      <div class="line-item">
+        <span class="line-key">月供（税前估算）</span>
+        <span class="line-val">
+          ${fmt(monthly)}
+          <span class="badge ${overCRA ? 'badge-cra-over' : 'badge-cra-ok'}" style="margin-left:4px;">${overCRA ? '超CRA' : 'CRA内'}</span>
+        </span>
+      </div>
+      <div class="line-item">
+        <span class="line-key">Lease总额（${term}月）</span>
+        <span class="line-val">${fmt(total)}</span>
+      </div>
+      <div class="line-item">
+        <span class="line-key">GST ITC回收</span>
+        <span class="line-val green">−${fmt(gstBack)}</span>
+      </div>
+      <div class="line-item">
+        <span class="line-key">公司税抵扣（${Math.round(bizuse*100)}%业务）</span>
+        <span class="line-val green">−${fmt(taxShield)}</span>
+      </div>
+      <div class="line-item">
+        <span class="line-key">${extra1L}</span>
+        <span class="line-val amber">+${fmt(extra1)}</span>
+      </div>
+      <div class="line-item">
+        <span class="line-key">${extra2L}</span>
+        <span class="line-val amber">+${fmt(extra2)}</span>
+      </div>
+      <div class="total-line">
+        <span>${yrs}净成本</span>
+        <span>${fmt(net)}</span>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('cards-container').innerHTML =
+    makeCard('EQB 300', eqbMonthly, eqbTotal, eqbGST, eqbTaxShield,
+      '充电桩安装', charger, '电费估算', eqbElec, eqbNet, eqbMonthly > CRA, eqbWins) +
+    makeCard('GLC 300e', glcMonthly, glcTotal, glcGST, glcTaxShield,
+      '油费估算（PHEV）', glcFuel, '充电桩', 0, glcNet, glcMonthly > CRA, !eqbWins);
+
+  const winner = eqbWins ? 'EQB 300' : 'GLC 300e';
+  const loser = eqbWins ? 'GLC 300e' : 'EQB 300';
+  const winNet = eqbWins ? eqbNet : glcNet;
+  const loseNet = eqbWins ? glcNet : eqbNet;
+
+  document.getElementById('summary-container').innerHTML = `
+    <div class="summary-card">
+      <div class="summary-headline">${yrs}综合推荐</div>
+      <div class="summary-amount">${winner}</div>
+      <div class="summary-sub">比 ${loser} 节省约 ${fmt(diff)}</div>
+      <div class="summary-grid">
+        <div>
+          <div class="summary-item-label">${winner} 净成本</div>
+          <div class="summary-item-val">${fmt(winNet)}</div>
+        </div>
+        <div>
+          <div class="summary-item-label">${loser} 净成本</div>
+          <div class="summary-item-val" style="color:#888;">${fmt(loseNet)}</div>
+        </div>
+        <div>
+          <div class="summary-item-label">工签安全性</div>
+          <div class="summary-item-val" style="color:${term === 36 ? '#4ade80' : '#fb923c'};">${term === 36 ? '✓ 36月推荐' : '⚠ 注意身份'}</div>
+        </div>
+        <div>
+          <div class="summary-item-label">CRA月供上限</div>
+          <div class="summary-item-val">$1,050/月</div>
+        </div>
+      </div>
+    </div>`;
+}
+
+update();
+</script>
+</body>
+</html>
